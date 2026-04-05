@@ -12,6 +12,7 @@ def launch_demo() -> None:
 
     os.environ["DEMO_MODE"] = "true"
     os.environ.setdefault("DEFAULT_CITY", "Chicago")
+    os.environ.setdefault("DEMO_AUTOPLAY", "false")
     main()
 
 

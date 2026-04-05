@@ -6,6 +6,7 @@ This project now includes a customer-facing demo build.
 
 - `python demo.py`
 - double-click `launch_demo.bat` on Windows
+- `python demo_autoplay.py` for automated screencasts
 
 ## Demo Restrictions
 

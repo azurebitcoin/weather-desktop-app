@@ -74,6 +74,10 @@ If you want to preview the interface before creating an API key, set `DEMO_MODE=
 
 A sample interface capture created in demo mode is available at `assets/weather-desk-demo-window.png`.
 
+## Demo Video
+
+A short screencast of the demo build is available at `assets/weather-desk-demo.mp4`.
+
 ## Demo Build For Clients
 
 If you want to show the app before handing over the production version:

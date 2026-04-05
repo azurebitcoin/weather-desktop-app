@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import threading
 import tkinter as tk
 from tkinter import messagebox, ttk
@@ -38,7 +39,15 @@ class WeatherApp(tk.Tk):
 
         self._configure_styles()
         self._build_layout()
+        self.after(100, self.city_entry.focus_set)
         self.fetch_weather()
+        if self.settings.demo_mode and os.getenv("DEMO_AUTOPLAY", "").lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }:
+            self._schedule_demo_sequence()
 
     def _configure_styles(self) -> None:
         """Define a small visual system so the interface looks consistent."""
@@ -216,3 +225,22 @@ class WeatherApp(tk.Tk):
         button_state = "disabled" if is_loading else "normal"
         self.city_entry.configure(state=entry_state)
         self.search_button.configure(state=button_state)
+
+    def _schedule_demo_sequence(self) -> None:
+        """Animate a few city changes for demo recordings."""
+
+        initial_delay_ms = 5000
+        step_ms = 3000
+        for index, city in enumerate(("Kyiv", "Oslo", "Tokyo")):
+            delay = initial_delay_ms + index * step_ms
+            self.after(delay, lambda city_name=city: self._load_demo_city(city_name))
+
+    def _load_demo_city(self, city: str) -> None:
+        """Switch the demo to a predefined city."""
+
+        if self._is_loading:
+            self.after(400, lambda: self._load_demo_city(city))
+            return
+
+        self.city_var.set(city)
+        self.fetch_weather()
