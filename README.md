@@ -137,3 +137,8 @@ The demo build displays a visible notice and uses preview data instead of live A
 - If a city cannot be found, the app shows a friendly error dialog.
 - You can switch between metric and imperial units through the `.env` file.
 - `DEMO_MODE=true` is helpful for screenshots, training, or offline previews.
+
+## Contact
+
+For software orders or custom development, contact: [https://t.me/mysql_b](https://t.me/mysql_b)
+
